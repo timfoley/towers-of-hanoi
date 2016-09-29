@@ -4,8 +4,13 @@
   // [x] toggle start and reset button text
 //QUESTIONS:
   // should I daisy chain my methods, or have them call in sequence?
+    // AM: You mean in reference to jQuery methods? Nothing wrong with daisy chaining them, so long as it works.
+    // AM: Sometimes I actually find this preferable. Makes code more readable and you don't have to repeat the thing you're selecting so many times.
   // should I use `this.` or `game.`? I'm assuming that when I get more OOJS about it, `this` would be easier to work with.
+    // AM: You can probably answer this question now, but I would use `this`. While it doesn't really matter in this case, where there's only one game object, using `this` would allow you to reuse this code elsewhere if you felt so inclined.
+    // AM: Also hardcoding variables and values tends to be a "code smell" unless there's a good reason for doing it.
 
+// AM: +1 naming your variables this way.
 var $columns = $('.col');
 var $winningColumns = $('.c2,.c3');
 var $rings;
@@ -56,6 +61,7 @@ var game = {
     // clicking reset
     $reset.on('click', function() {
       // why didn't this work when I did `$reset.on('click', game.reset)` ?
+      // AM: I think this would work if you attached a `bind.this(game)` to the end of `game.reset`. `this` inside of your reset method is probably representing the event and not the `game` object.
       game.reset();
     });
 
@@ -133,6 +139,7 @@ var game = {
   },
   reset: function() {
     // this will be better when I can just make another instance with a constructor function, right?
+    // AM: YES.
     $columns.children().remove();
     this.generateRings(this.rings);
     this.over = false;
@@ -170,6 +177,7 @@ var game = {
     $('.level').html(this.rings);
     this.generateRings(this.rings);
   },
+  // AM: This is cool.
   generateRings: function(n) {
     $c1.children().remove();
     // this.rings = n;
