@@ -1,9 +1,11 @@
+/* AM: Consider looking into SASS so you can actually make these colors reusable variables! */
 /*Colors: #30A9DE
           #E53A40
           #EFDC05
           #090707*/
 
 body {
+  /* AM: If you find that you're using these three flex properties very often, consider making them into their own class so you can just pop that bad boy onto any HTML elements that need 'em. */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -85,6 +87,7 @@ footer > a:hover {
   transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* AM: DOPE. */
 .bounce {
   animation-name: bounce;
   animation-iteration-count: infinite;
